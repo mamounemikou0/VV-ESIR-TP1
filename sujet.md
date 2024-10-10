@@ -32,7 +32,7 @@ The issue involves making constructors private in utility classes like `Iterable
 
 ---
 
-### 3) Formal Specification for WebAssembly
+### 4) Formal Specification for WebAssembly
 A formal specification for WebAssembly ensures accuracy, consistency, and platform security by offering a precise and rigorous explanation of the language's functionality. Strong guarantees for correctness and compatibility are provided by this formal foundation, although testing is still necessary. 
 
 #### Advantages of a Formal Specification for WebAssembly
@@ -46,7 +46,7 @@ The formal specification improves reliability, but testing remains crucial. Test
 
 ---
 
-### 4) Mechanized Specification of WebAssembly
+### 5) Mechanized Specification of WebAssembly
 The mechanized specification of WebAssembly, detailed in the second paper by Conrad Watt, provides numerous advantages and complements the original formal specification. Key advantages of the mechanized specification include:
 
 #### Advantages
