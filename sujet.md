@@ -14,6 +14,7 @@
 1) The bug in Knight Capital's trading system was caused by a misconfiguration in their Smart Market Access Routing System (SMARS). The old "Power Peg" algorithm, which had been decommissioned, was inadvertently reactivated on some servers due to a misused configuration flag (RLP). This led to the system sending thousands of erroneous "child orders" for each parent order. These trades were executed at incorrect prices, buying high and selling low at an incredibly fast rate, affecting stock prices and causing significant market disruptions.
 The algorithm in question was supposed to handle routing orders efficiently, but because the old "Power Peg" code was unintentionally enabled, it did not function properly. Instead of optimizing trades, it flooded the market with incorrect orders.
 **Repercussions**
+
 Knight Capital incurred a $440 million loss within 45 minutes due to erroneous trades.
 Knight’s faulty trades affected 154 stocks, comprising 20%-50% of trading volume in some cases, and disrupting the stock prices significantly, by up to 10%.
 The company needed external financial support to avoid collapse, eventually being bought by Getco LLC.
