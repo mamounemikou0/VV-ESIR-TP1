@@ -49,9 +49,11 @@ Tests validate performance, check real-world behavior, and catch practical bugs.
 The mechanized specification of WebAssembly, detailed in the second paper by Conrad Watt, provides numerous advantages and complements the original formal specification. Key advantages of the mechanized specification include:   
 **Advantages**      
 
-**Formal Proofs of Soundness**: The executable and validation procedures for WebAssembly can be confirmed by formal, machine-verified proofs made possible by the automated specification. This indicates that the specification is verifiable mathematically, ensuring that legitimate WebAssembly code won't result in dangerous behavior when it runs (Researchr) (POPL 2018).   
-**Exposure of Issues in the Formal Specification**: The mechanization process helped identify several issues in the original WebAssembly specification, which were subsequently corrected. This feedback loop improved the official specification, showing how the mechanized version contributed to refining WebAssembly's design​.
-Creation of Artifacts: A number of important artifacts were derived from the automated specification, including:
+**Formal Proofs of Soundness**: The executable and validation procedures for WebAssembly can be confirmed by formal, machine-verified proofs made possible by the automated specification. This indicates that the specification is verifiable mathematically, ensuring that legitimate WebAssembly code won't result in dangerous behavior when it runs (Researchr) (POPL 2018).      
+
+**Exposure of Issues in the Formal Specification**: The mechanization process helped identify several issues in the original WebAssembly specification, which were subsequently corrected. This feedback loop improved the official specification, showing how the mechanized version contributed to refining WebAssembly's design​.   
+
+**Creation of Artifacts**: A number of important artifacts were derived from the automated specification, including:
 
 **Verified Executable Interpreter**: A WebAssembly interpreter that has been officially verified to guarantee accuracy.
      Type Checker: A program to make sure WebAssembly code is type safe.
