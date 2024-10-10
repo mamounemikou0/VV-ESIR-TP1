@@ -23,50 +23,50 @@ The algorithm in question was supposed to handle routing orders efficiently, but
 - The company needed external financial support to avoid collapse, eventually being bought by Getco LLC.
 
 #### Could Testing Have Helped?
-Yes, thorough testing could have uncovered the bug. Particularly, if Knight Capital had tested the impact of turning on the RLP flag with simulated trades and ensured old, deprecated code was not left on active servers, the error could have been avoided. The Knight Capital bug occurred on **August 1, 2012**, when an outdated algorithm called "Power Peg" was mistakenly reactivated due to a misconfiguration flag in their SMARS. This caused Knight's trading system to execute erroneous trades at incorrect prices—buying high and selling low—affecting 154 stocks and leading to a **$440 million loss** in just 45 minutes. The bug, though local to Knight's systems, had a global impact on stock markets. Thorough testing, especially of deployment flags and server configurations, could have prevented this catastrophic failure .
+Yes, thorough testing could have uncovered the bug. Particularly, if Knight Capital had tested the impact of turning on the RLP flag with simulated trades and ensured old, deprecated code was not left on active servers, the error could have been avoided. The Knight Capital bug occurred on **August 1, 2012**, when an outdated algorithm called "Power Peg" was mistakenly reactivated due to a misconfiguration flag in their SMARS. This caused Knight's trading system to execute erroneous trades at incorrect prices—buying high and selling low—affecting 154 stocks and leading to a **$440 million loss** in just 45 minutes. The bug, though local to Knight's systems, had a global impact on stock markets. Thorough testing, especially of deployment flags and server configurations, could have prevented this catastrophic failure .      
 
 ---
 
 ### 2) Private Constructor Changes in Apache Commons
-The issue involves making constructors private in utility classes like `IterableUtils` and `ArrayUtils` to prevent instantiation. The change to `IterableUtils`'s constructor was controversial as it broke binary compatibility by changing a public constructor to private. To maintain backward compatibility, the change was revised, and Javadocs were improved. The change in `ArrayUtils` did not affect binary compatibility as it was a package-private class. Additional tests were not explicitly mentioned, but maintaining compatibility suggests that care was taken to ensure stability. The bug was local to the implementation .
+The issue involves making constructors private in utility classes like `IterableUtils` and `ArrayUtils` to prevent instantiation. The change to `IterableUtils`'s constructor was controversial as it broke binary compatibility by changing a public constructor to private. To maintain backward compatibility, the change was revised, and Javadocs were improved. The change in `ArrayUtils` did not affect binary compatibility as it was a package-private class. Additional tests were not explicitly mentioned, but maintaining compatibility suggests that care was taken to ensure stability. The bug was local to the implementation. [More information](https://issues.apache.org/jira/projects/COLLECTIONS/issues/COLLECTIONS-772?filter=doneissues). 
 
 ---
 
 ### 3) Formal Specification for WebAssembly
 A formal specification for WebAssembly ensures accuracy, consistency, and platform security by offering a precise and rigorous explanation of the language's functionality. Strong guarantees for correctness and compatibility are provided by this formal foundation, although testing is still necessary. 
 
-#### Advantages of a Formal Specification for WebAssembly:
+#### Advantages of a Formal Specification for WebAssembly
 - **Precision**: Ensures clear and unambiguous definitions.
 - **Consistency**: Guarantees uniform behavior across platforms.
 - **Security**: Facilitates rigorous safety checks.
 - **Interoperability**: Enables smooth integration across environments.
 
-#### Testing Necessity:
-The formal specification improves reliability, but testing remains crucial. Tests validate performance, check real-world behavior, and catch practical bugs&#8203;:contentReference[oaicite:0]{index=0}&#8203;:contentReference[oaicite:1]{index=1}&#8203;:contentReference[oaicite:2]{index=2}.
+#### Testing Necessity
+The formal specification improves reliability, but testing remains crucial. Tests validate performance, check real-world behavior, and catch practical bugs.      
 
 ---
 
 ### 4) Mechanized Specification of WebAssembly
 The mechanized specification of WebAssembly, detailed in the second paper by Conrad Watt, provides numerous advantages and complements the original formal specification. Key advantages of the mechanized specification include:
 
-#### Advantages:
-- **Formal Proofs of Soundness**: The executable and validation procedures for WebAssembly can be confirmed by formal, machine-verified proofs made possible by the mechanized specification. This indicates that the specification is verifiable mathematically, ensuring that legitimate WebAssembly code won't result in dangerous behavior during execution&#8203;:contentReference[oaicite:3]{index=3}&#8203;:contentReference[oaicite:4]{index=4}.
+#### Advantages
+- **Formal Proofs of Soundness**: The executable and validation procedures for WebAssembly can be confirmed by formal, machine-verified proofs made possible by the mechanized specification. This indicates that the specification is verifiable mathematically, ensuring that legitimate WebAssembly code won't result in dangerous behavior during execution (Researchr) (POPL 2018).      
 
 - **Exposure of Issues in the Formal Specification**: The mechanization process helped identify several issues in the original WebAssembly specification, which were subsequently corrected. This feedback loop improved the official specification, showing how the mechanized version contributed to refining WebAssembly's design.
 
-- **Creation of Artifacts**: Important artifacts derived from the mechanized specification include:
-  - **Verified Executable Interpreter**: A WebAssembly interpreter that has been formally verified to guarantee accuracy.
-  - **Type Checker**: A program to ensure WebAssembly code is type-safe.
-  - **Validation Algorithms**: Effective algorithms for confirming that WebAssembly code can be validated in linear time&#8203;:contentReference[oaicite:5]{index=5}&#8203;:contentReference[oaicite:6]{index=6}&#8203;:contentReference[oaicite:7]{index=7}.
+- **Creation of Artifacts**: A number of important artifacts were derived from the mechanized specification, including:
+  - **Verified Executable Interpreter**: A WebAssembly interpreter that has been officially verified to guarantee accuracy.
+  - **Type Checker**: A program to ensure WebAssembly code is type safe.
+  - **Validation Algorithms**: Effective approaches for confirming that WebAssembly code can be validated in linear time.
 
-- **Implementation Consistency**: The mechanized specification serves as a guideline for creating consistent implementations across browsers and environments, ensuring that WebAssembly behaves the same way regardless of the platform.
+- **Implementation Consistency**: The mechanized specification serves as a guideline for creating consistent implementations across browsers and environments, ensuring that WebAssembly behaves the same way regardless of the platform.    
 
 ---
 
 ### Verification of the Specification
-The authors verified the specification using mechanized proofs within Isabelle/HOL, which mathematically confirmed that WebAssembly's formal semantics are sound. They also implemented WebAssembly in major browsers, providing practical validation of their formal semantics. These real-world implementations, combined with differential fuzzing, helped ensure that WebAssembly's specification holds up in actual usage scenarios&#8203;:contentReference[oaicite:8]{index=8}&#8203;:contentReference[oaicite:9]{index=9}.
+The authors verified the specification using mechanized proofs within Isabelle/HOL, which mathematically confirmed that WebAssembly's formal semantics are sound. They also implemented WebAssembly in major browsers, providing practical validation of their formal semantics. These real-world implementations, combined with differential fuzzing, helped ensure that WebAssembly's specification holds up in actual usage scenarios.    
 
 ---
 
 ### Testing Necessity
-Despite the mechanized formal specification, testing remains essential. While formal proofs verify correctness in theory, they do not account for all real-world edge cases or performance aspects. Testing is needed to ensure implementation consistency across platforms, optimize performance, and validate how WebAssembly integrates with other web technologies. Therefore, even with a rigorous specification, both formal verification and practical testing are necessary to ensure WebAssembly's robustness&#8203;:contentReference[oaicite:10]{index=10}&#8203;:contentReference[oaicite:11]{index=11}.
+Despite the mechanized formal specification, testing remains essential. While formal proofs verify correctness in theory, they do not account for all real-world edge cases or performance aspects. Testing is needed to ensure implementation consistency across platforms, optimize performance, and validate how WebAssembly integrates with other web technologies. Therefore, even with a rigorous specification, both formal verification and practical testing are necessary to ensure WebAssembly's robustness.
