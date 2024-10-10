@@ -47,9 +47,9 @@ Formal specification improves reliability, but testing remains crucial.
 Tests validate performance, check real-world behavior, and catch practical bugs.   
 5)   
 The mechanized specification of WebAssembly, detailed in the second paper by Conrad Watt, provides numerous advantages and complements the original formal specification. Key advantages of the mechanized specification include:   
-**Advantages**      
+**Advantages:**      
 
-**Formal Proofs of Soundness**: The executable and validation procedures for WebAssembly can be confirmed by formal, machine-verified proofs made possible by the automated specification. This indicates that the specification is verifiable mathematically, ensuring that legitimate WebAssembly code won't result in dangerous behavior when it runs (Researchr) (POPL 2018).      
+ -**Formal Proofs of Soundness**: The executable and validation procedures for WebAssembly can be confirmed by formal, machine-verified proofs made possible by the automated specification. This indicates that the specification is verifiable mathematically, ensuring that legitimate WebAssembly code won't result in dangerous behavior when it runs (Researchr) (POPL 2018).      
 
 **Exposure of Issues in the Formal Specification**: The mechanization process helped identify several issues in the original WebAssembly specification, which were subsequently corrected. This feedback loop improved the official specification, showing how the mechanized version contributed to refining WebAssembly's design​.   
 
