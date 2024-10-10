@@ -32,12 +32,16 @@ A formal specification for WebAssembly ensures accuracy, consistency, and platfo
 
 **Advantages of a formal specification for WebAssembly:**   
 
-Precision: Ensures clear and unambiguous definitions.
-Consistency: Guarantees uniform behavior across platforms.
-Security: Facilitates rigorous safety checks.
+Precision: Ensures clear and unambiguous definitions.   
+
+Consistency: Guarantees uniform behavior across platforms.   
+
+Security: Facilitates rigorous safety checks.   
+
 Interoperability: Enables smooth integration across environments.   
 
 **Testing necessity:**
 
-Formal specification improves reliability, but testing remains crucial.
+Formal specification improves reliability, but testing remains crucial.   
+
 Tests validate performance, check real-world behavior, and catch practical bugs.
