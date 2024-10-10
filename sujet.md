@@ -11,58 +11,62 @@
 5.  Shortly after the appearance of WebAssembly another paper proposed a mechanized specification of the language using Isabelle. The paper can be consulted here: https://www.cl.cam.ac.uk/~caw77/papers/mechanising-and-verifying-the-webassembly-specification.pdf. This mechanized specification complements the first formalization attempt from the paper. According to the author of this second paper, what are the main advantages of the mechanized specification? Did it help improving the original formal specification of the language? What other artifacts were derived from this mechanized specification? How did the author verify the specification? Does this new specification removes the need for testing?
 
 ## Answers
-1) The bug in Knight Capital's trading system was caused by a misconfiguration in their Smart Market Access Routing System (SMARS). The old "Power Peg" algorithm, which had been decommissioned, was inadvertently reactivated on some servers due to a misused configuration flag (RLP). This led to the system sending thousands of erroneous "child orders" for each parent order. These trades were executed at incorrect prices, buying high and selling low at an incredibly fast rate, affecting stock prices and causing significant market disruptions.
+
+### 1) Knight Capital Bug Overview
+The bug in Knight Capital's trading system was caused by a misconfiguration in their Smart Market Access Routing System (SMARS). The old "Power Peg" algorithm, which had been decommissioned, was inadvertently reactivated on some servers due to a misused configuration flag (RLP). This led to the system sending thousands of erroneous "child orders" for each parent order. These trades were executed at incorrect prices, buying high and selling low at an incredibly fast rate, affecting stock prices and causing significant market disruptions.
+
 The algorithm in question was supposed to handle routing orders efficiently, but because the old "Power Peg" code was unintentionally enabled, it did not function properly. Instead of optimizing trades, it flooded the market with incorrect orders.
 
-**Repercussions**
+#### Repercussions
+- Knight Capital incurred a **$440 million loss** within 45 minutes due to erroneous trades.
+- Knight’s faulty trades affected **154 stocks**, comprising 20%-50% of trading volume in some cases, and disrupted stock prices significantly, by up to 10%.
+- The company needed external financial support to avoid collapse, eventually being bought by Getco LLC.
 
-Knight Capital incurred a $440 million loss within 45 minutes due to erroneous trades.
-Knight’s faulty trades affected 154 stocks, comprising 20%-50% of trading volume in some cases, and disrupting the stock prices significantly, by up to 10%.
-The company needed external financial support to avoid collapse, eventually being bought by Getco LLC.
+#### Could Testing Have Helped?
+Yes, thorough testing could have uncovered the bug. Particularly, if Knight Capital had tested the impact of turning on the RLP flag with simulated trades and ensured old, deprecated code was not left on active servers, the error could have been avoided. The Knight Capital bug occurred on **August 1, 2012**, when an outdated algorithm called "Power Peg" was mistakenly reactivated due to a misconfiguration flag in their SMARS. This caused Knight's trading system to execute erroneous trades at incorrect prices—buying high and selling low—affecting 154 stocks and leading to a **$440 million loss** in just 45 minutes. The bug, though local to Knight's systems, had a global impact on stock markets. Thorough testing, especially of deployment flags and server configurations, could have prevented this catastrophic failure .
 
-**Could testing have helped?**  
+---
 
-Yes, thorough testing could have uncovered the bug. Particularly, if Knight Capital had tested the impact of turning on the RLP flag with simulated trades and ensured old, deprecated code was not left on active servers, the error could have been avoided​.
-The Knight Capital bug occurred on August 1, 2012, when an outdated algorithm called "Power Peg" was mistakenly reactivated due to a misconfiguration flag in their Smart Market Access Routing System (SMARS). This caused Knight's trading system to execute erroneous trades at incorrect prices—buying high and selling low—affecting 154 stocks and leading to a $440 million loss in just 45 minutes. The bug, though local to Knight's systems, had a global impact on stock markets. Thorough testing, especially of deployment flags and server configurations, could have prevented this catastrophic failure【18†source】.      
+### 2) Private Constructor Changes in Apache Commons
+The issue involves making constructors private in utility classes like `IterableUtils` and `ArrayUtils` to prevent instantiation. The change to `IterableUtils`'s constructor was controversial as it broke binary compatibility by changing a public constructor to private. To maintain backward compatibility, the change was revised, and Javadocs were improved. The change in `ArrayUtils` did not affect binary compatibility as it was a package-private class. Additional tests were not explicitly mentioned, but maintaining compatibility suggests that care was taken to ensure stability. The bug was local to the implementation .
 
-2)  The issue involves making constructors private in utility classes like `IterableUtils` and `ArrayUtils` to prevent instantiation. The change to `IterableUtils`'s constructor was controversial as it broke binary compatibility by changing a public constructor to private. To maintain backward compatibility, the change was revised, and Javadocs were improved. The change in `ArrayUtils` did not affect binary compatibility as it was a package-private class. Additional tests were not explicitly mentioned, but maintaining compatibility suggests that care was taken to ensure stability. the bug was local 
-https://issues.apache.org/jira/projects/COLLECTIONS/issues/COLLECTIONS-772?filter=doneissues   
+---
 
+### 3) Formal Specification for WebAssembly
+A formal specification for WebAssembly ensures accuracy, consistency, and platform security by offering a precise and rigorous explanation of the language's functionality. Strong guarantees for correctness and compatibility are provided by this formal foundation, although testing is still necessary. 
 
-4)   A formal specification for WebAssembly ensures accuracy, consistency, and platform security by offering a precise and rigorous explanation of the language's functionality. Strong guarantees for correctness and compatibility are provided by this formal foundation, although testing is still necessary. Testing is still necessary to confirm that implementations meet performance requirements and identify real-world problems in real-world settings. Here's a thorough explanation:    
+#### Advantages of a Formal Specification for WebAssembly:
+- **Precision**: Ensures clear and unambiguous definitions.
+- **Consistency**: Guarantees uniform behavior across platforms.
+- **Security**: Facilitates rigorous safety checks.
+- **Interoperability**: Enables smooth integration across environments.
 
-**Advantages of a formal specification for WebAssembly:**   
+#### Testing Necessity:
+The formal specification improves reliability, but testing remains crucial. Tests validate performance, check real-world behavior, and catch practical bugs&#8203;:contentReference[oaicite:0]{index=0}&#8203;:contentReference[oaicite:1]{index=1}&#8203;:contentReference[oaicite:2]{index=2}.
 
-Precision: Ensures clear and unambiguous definitions.   
+---
 
-Consistency: Guarantees uniform behavior across platforms.   
+### 4) Mechanized Specification of WebAssembly
+The mechanized specification of WebAssembly, detailed in the second paper by Conrad Watt, provides numerous advantages and complements the original formal specification. Key advantages of the mechanized specification include:
 
-Security: Facilitates rigorous safety checks.   
+#### Advantages:
+- **Formal Proofs of Soundness**: The executable and validation procedures for WebAssembly can be confirmed by formal, machine-verified proofs made possible by the mechanized specification. This indicates that the specification is verifiable mathematically, ensuring that legitimate WebAssembly code won't result in dangerous behavior during execution&#8203;:contentReference[oaicite:3]{index=3}&#8203;:contentReference[oaicite:4]{index=4}.
 
-Interoperability: Enables smooth integration across environments.   
+- **Exposure of Issues in the Formal Specification**: The mechanization process helped identify several issues in the original WebAssembly specification, which were subsequently corrected. This feedback loop improved the official specification, showing how the mechanized version contributed to refining WebAssembly's design.
 
-**Testing necessity:**
+- **Creation of Artifacts**: Important artifacts derived from the mechanized specification include:
+  - **Verified Executable Interpreter**: A WebAssembly interpreter that has been formally verified to guarantee accuracy.
+  - **Type Checker**: A program to ensure WebAssembly code is type-safe.
+  - **Validation Algorithms**: Effective algorithms for confirming that WebAssembly code can be validated in linear time&#8203;:contentReference[oaicite:5]{index=5}&#8203;:contentReference[oaicite:6]{index=6}&#8203;:contentReference[oaicite:7]{index=7}.
 
-Formal specification improves reliability, but testing remains crucial.   
-Tests validate performance, check real-world behavior, and catch practical bugs.      
+- **Implementation Consistency**: The mechanized specification serves as a guideline for creating consistent implementations across browsers and environments, ensuring that WebAssembly behaves the same way regardless of the platform.
 
-5)   The mechanized specification of WebAssembly, detailed in the second paper by Conrad Watt, provides numerous advantages and complements the original formal specification. Key advantages of the mechanized specification include:   
-**Advantages:**      
+---
 
-  **-Formal Proofs of Soundness**:The executable and validation procedures for WebAssembly can be confirmed by formal, machine-verified proofs made possible by the automated specification. This indicates that the specification is verifiable mathematically, ensuring that legitimate WebAssembly code won't result in dangerous behavior when it runs (Researchr) (POPL 2018).      
+### Verification of the Specification
+The authors verified the specification using mechanized proofs within Isabelle/HOL, which mathematically confirmed that WebAssembly's formal semantics are sound. They also implemented WebAssembly in major browsers, providing practical validation of their formal semantics. These real-world implementations, combined with differential fuzzing, helped ensure that WebAssembly's specification holds up in actual usage scenarios&#8203;:contentReference[oaicite:8]{index=8}&#8203;:contentReference[oaicite:9]{index=9}.
 
-**-Exposure of Issues in the Formal Specification**: The mechanization process helped identify several issues in the original WebAssembly specification, which were subsequently corrected. This feedback loop improved the official specification, showing how the mechanized version contributed to refining WebAssembly's design​.   
+---
 
-**-Creation of Artifacts**: A number of important artifacts were derived from the automated specification, including:
-
-**-Verified Executable Interpreter**: A WebAssembly interpreter that has been officially verified to guarantee accuracy.
-     Type Checker: A program to make sure WebAssembly code is type safe.
-    Effective approaches for confirming that WebAssembly code can be validated in linear time are known as validation algorithms.​   
-**-Implementation Consistency**: The mechanized specification serves as a guideline for creating consistent implementations across browsers and environments, ensuring that WebAssembly behaves the same way regardless of the platform    
-
-**Verification of the Specification**:   
-The authors verified the specification using mechanized proofs within Isabelle/HOL, which mathematically confirmed that WebAssembly's formal semantics are sound. They also implemented WebAssembly in major browsers, providing practical validation of their formal semantics. These real-world implementations, combined with differential fuzzing, helped ensure that WebAssembly's specification holds up in actual usage scenarios​    
-
-**Testing Necessity**:   
-Despite the mechanized formal specification, testing remains essential. While formal proofs verify correctness in theory, they do not account for all real-world edge cases or performance aspects. Testing is needed to ensure implementation consistency across platforms, optimize performance, and validate how WebAssembly integrates with other web technologies​.
-Therefore, even with a rigorous specification, both formal verification and practical testing are necessary to ensure WebAssembly's robustness.
+### Testing Necessity
+Despite the mechanized formal specification, testing remains essential. While formal proofs verify correctness in theory, they do not account for all real-world edge cases or performance aspects. Testing is needed to ensure implementation consistency across platforms, optimize performance, and validate how WebAssembly integrates with other web technologies. Therefore, even with a rigorous specification, both formal verification and practical testing are necessary to ensure WebAssembly's robustness&#8203;:contentReference[oaicite:10]{index=10}&#8203;:contentReference[oaicite:11]{index=11}.
