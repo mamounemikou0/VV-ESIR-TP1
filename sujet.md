@@ -49,16 +49,16 @@ Tests validate performance, check real-world behavior, and catch practical bugs.
 The mechanized specification of WebAssembly, detailed in the second paper by Conrad Watt, provides numerous advantages and complements the original formal specification. Key advantages of the mechanized specification include:   
 **Advantages:**      
 
- -**Formal Proofs of Soundness**: The executable and validation procedures for WebAssembly can be confirmed by formal, machine-verified proofs made possible by the automated specification. This indicates that the specification is verifiable mathematically, ensuring that legitimate WebAssembly code won't result in dangerous behavior when it runs (Researchr) (POPL 2018).      
+ **-Formal Proofs of Soundness**: The executable and validation procedures for WebAssembly can be confirmed by formal, machine-verified proofs made possible by the automated specification. This indicates that the specification is verifiable mathematically, ensuring that legitimate WebAssembly code won't result in dangerous behavior when it runs (Researchr) (POPL 2018).      
 
-**Exposure of Issues in the Formal Specification**: The mechanization process helped identify several issues in the original WebAssembly specification, which were subsequently corrected. This feedback loop improved the official specification, showing how the mechanized version contributed to refining WebAssembly's design​.   
+**-Exposure of Issues in the Formal Specification**: The mechanization process helped identify several issues in the original WebAssembly specification, which were subsequently corrected. This feedback loop improved the official specification, showing how the mechanized version contributed to refining WebAssembly's design​.   
 
-**Creation of Artifacts**: A number of important artifacts were derived from the automated specification, including:
+**-Creation of Artifacts**: A number of important artifacts were derived from the automated specification, including:
 
-**Verified Executable Interpreter**: A WebAssembly interpreter that has been officially verified to guarantee accuracy.
+**-Verified Executable Interpreter**: A WebAssembly interpreter that has been officially verified to guarantee accuracy.
      Type Checker: A program to make sure WebAssembly code is type safe.
     Effective approaches for confirming that WebAssembly code can be validated in linear time are known as validation algorithms.​   
-**Implementation Consistency**: The mechanized specification serves as a guideline for creating consistent implementations across browsers and environments, ensuring that WebAssembly behaves the same way regardless of the platform    
+**-Implementation Consistency**: The mechanized specification serves as a guideline for creating consistent implementations across browsers and environments, ensuring that WebAssembly behaves the same way regardless of the platform    
 
 **Verification of the Specification**:   
 The authors verified the specification using mechanized proofs within Isabelle/HOL, which mathematically confirmed that WebAssembly's formal semantics are sound. They also implemented WebAssembly in major browsers, providing practical validation of their formal semantics. These real-world implementations, combined with differential fuzzing, helped ensure that WebAssembly's specification holds up in actual usage scenarios​    
