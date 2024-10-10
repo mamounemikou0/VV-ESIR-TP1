@@ -58,4 +58,11 @@ The mechanized specification of WebAssembly, detailed in the second paper by Con
 **Verified Executable Interpreter**: A WebAssembly interpreter that has been officially verified to guarantee accuracy.
      Type Checker: A program to make sure WebAssembly code is type safe.
     Effective approaches for confirming that WebAssembly code can be validated in linear time are known as validation algorithms.​   
-**Implementation Consistency**: The mechanized specification serves as a guideline for creating consistent implementations across browsers and environments, ensuring that WebAssembly behaves the same way regardless of the platform
+**Implementation Consistency**: The mechanized specification serves as a guideline for creating consistent implementations across browsers and environments, ensuring that WebAssembly behaves the same way regardless of the platform    
+
+**Verification of the Specification**:   
+The authors verified the specification using mechanized proofs within Isabelle/HOL, which mathematically confirmed that WebAssembly's formal semantics are sound. They also implemented WebAssembly in major browsers, providing practical validation of their formal semantics. These real-world implementations, combined with differential fuzzing, helped ensure that WebAssembly's specification holds up in actual usage scenarios​    
+
+**Testing Necessity**:   
+Despite the mechanized formal specification, testing remains essential. While formal proofs verify correctness in theory, they do not account for all real-world edge cases or performance aspects. Testing is needed to ensure implementation consistency across platforms, optimize performance, and validate how WebAssembly integrates with other web technologies​.
+Therefore, even with a rigorous specification, both formal verification and practical testing are necessary to ensure WebAssembly's robustness.
