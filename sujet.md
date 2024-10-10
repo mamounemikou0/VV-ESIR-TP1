@@ -18,6 +18,11 @@ The algorithm in question was supposed to handle routing orders efficiently, but
 Knight Capital incurred a $440 million loss within 45 minutes due to erroneous trades.
 Knight’s faulty trades affected 154 stocks, comprising 20%-50% of trading volume in some cases, and disrupting the stock prices significantly, by up to 10%.
 The company needed external financial support to avoid collapse, eventually being bought by Getco LLC.
-Could testing have helped?
+
+**Could testing have helped?**  
+
 Yes, thorough testing could have uncovered the bug. Particularly, if Knight Capital had tested the impact of turning on the RLP flag with simulated trades and ensured old, deprecated code was not left on active servers, the error could have been avoided​.
-The Knight Capital bug occurred on August 1, 2012, when an outdated algorithm called "Power Peg" was mistakenly reactivated due to a misconfiguration flag in their Smart Market Access Routing System (SMARS). This caused Knight's trading system to execute erroneous trades at incorrect prices—buying high and selling low—affecting 154 stocks and leading to a $440 million loss in just 45 minutes. The bug, though local to Knight's systems, had a global impact on stock markets. Thorough testing, especially of deployment flags and server configurations, could have prevented this catastrophic failure【18†source】.
+The Knight Capital bug occurred on August 1, 2012, when an outdated algorithm called "Power Peg" was mistakenly reactivated due to a misconfiguration flag in their Smart Market Access Routing System (SMARS). This caused Knight's trading system to execute erroneous trades at incorrect prices—buying high and selling low—affecting 154 stocks and leading to a $440 million loss in just 45 minutes. The bug, though local to Knight's systems, had a global impact on stock markets. Thorough testing, especially of deployment flags and server configurations, could have prevented this catastrophic failure【18†source】.   
+2)   
+The issue involves making constructors private in utility classes like `IterableUtils` and `ArrayUtils` to prevent instantiation. The change to `IterableUtils`'s constructor was controversial as it broke binary compatibility by changing a public constructor to private. To maintain backward compatibility, the change was revised, and Javadocs were improved. The change in `ArrayUtils` did not affect binary compatibility as it was a package-private class. Additional tests were not explicitly mentioned, but maintaining compatibility suggests that care was taken to ensure stability. the bug was local 
+https://issues.apache.org/jira/projects/COLLECTIONS/issues/COLLECTIONS-772?filter=doneissues
