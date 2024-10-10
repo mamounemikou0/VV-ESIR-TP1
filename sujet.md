@@ -28,7 +28,8 @@ The Knight Capital bug occurred on August 1, 2012, when an outdated algorithm ca
 The issue involves making constructors private in utility classes like `IterableUtils` and `ArrayUtils` to prevent instantiation. The change to `IterableUtils`'s constructor was controversial as it broke binary compatibility by changing a public constructor to private. To maintain backward compatibility, the change was revised, and Javadocs were improved. The change in `ArrayUtils` did not affect binary compatibility as it was a package-private class. Additional tests were not explicitly mentioned, but maintaining compatibility suggests that care was taken to ensure stability. the bug was local 
 https://issues.apache.org/jira/projects/COLLECTIONS/issues/COLLECTIONS-772?filter=doneissues   
 4)   
-A formal specification for WebAssembly ensures accuracy, consistency, and platform security by offering a precise and rigorous explanation of the language's functionality. Strong guarantees for correctness and compatibility are provided by this formal foundation, although testing is still necessary. Testing is still necessary to confirm that implementations meet performance requirements and identify real-world problems in real-world settings. Here's a thorough explanation:      
+A formal specification for WebAssembly ensures accuracy, consistency, and platform security by offering a precise and rigorous explanation of the language's functionality. Strong guarantees for correctness and compatibility are provided by this formal foundation, although testing is still necessary. Testing is still necessary to confirm that implementations meet performance requirements and identify real-world problems in real-world settings. Here's a thorough explanation:    
+
 **Advantages of a formal specification for WebAssembly:**   
 
 Precision: Ensures clear and unambiguous definitions.
