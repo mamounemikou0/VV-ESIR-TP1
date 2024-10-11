@@ -28,7 +28,23 @@ Yes, thorough testing could have uncovered the bug. Particularly, if Knight Capi
 ---
 
 ### 2) Private Constructor Changes in Apache Commons
-The issue involves making constructors private in utility classes like `IterableUtils` and `ArrayUtils` to prevent instantiation. The change to `IterableUtils`'s constructor was controversial as it broke binary compatibility by changing a public constructor to private. To maintain backward compatibility, the change was revised, and Javadocs were improved. The change in `ArrayUtils` did not affect binary compatibility as it was a package-private class. Additional tests were not explicitly mentioned, but maintaining compatibility suggests that care was taken to ensure stability. The bug was local to the implementation. [More information](https://issues.apache.org/jira/projects/COLLECTIONS/issues/COLLECTIONS-772?filter=doneissues). 
+The issue involves making constructors private in utility classes like `IterableUtils` and `ArrayUtils` to prevent instantiation. The change to `IterableUtils`'s constructor was controversial as it broke binary compatibility by changing a public constructor to private. To maintain backward compatibility, the change was revised, and Javadocs were improved. The change in `ArrayUtils` did not affect binary compatibility as it was a package-private class. Additional tests were not explicitly mentioned, but maintaining compatibility suggests that care was taken to ensure stability. The bug was local to the implementation. [More information](https://issues.apache.org/jira/projects/COLLECTIONS/issues/COLLECTIONS-772?filter=doneissues).   
+
+---   
+### 3) The concrete experiments they perform:
+ -**Chaos Monkey**:Random termination of virtual machine instances hosting production services to ensure services can withstand instance failures.This experiment needs requirements which are running during production and normal working hours for rapid engineer response, and the services need to be designed to handle individual instance failures.
+ 
+ -**Chaos Kong**:Simulates the failure of an entire Amazon EC2 region to verify the system’s ability to handle large-scale failures, and to do this Netflix must be capable of rerouting traffic from an EC2 region to another one in real-time,and the system should support failover between regions without disrupting the streaming experience.
+
+ -**Failure Injection Testing**:Simulates request failures between Netflix services to ensure the system degrades gracefully without affecting the user experience.The requirements for this experiment are that the system should include fallback mechanisms to ensure that essential services continue functioning, even when non-essential ones fail,the test environment must be capable of selectively failing requests and monitoring the system’s response in real-time.
+
+The variables observed are Stream Starts Per Second (SPS), which measures the number of video streams initiated each second,request latency,and error rates.   
+
+The main results shows that Netflix has successfully built more resilient systems by simulating failures, leading to improved fault tolerance. The experiments allowed Netflix to identify system weaknesses, improving their ability to maintain availability and performance even under turbulent conditions.
+Other companies like Amazon, Google, Microsoft, and Facebook were applying similar techniques to test  the resilience of their own systems.They could adopt Chaos Engineering based on their systems' architecture,they could terminate key service instances, inject artificial latency, fail requests between critical services,the Variables to Observe could be ad impressions per second (for ad-serving platforms), or error rates and response times.
+
+
+
 
 ---
 
